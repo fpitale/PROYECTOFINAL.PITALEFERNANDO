@@ -1,0 +1,45 @@
+html{ 
+background-image: linear-gradient(to left, white, #3E6D9C);
+}
+
+h1 {  text-align: center;
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+font-size: 2rem;}
+
+h2 { 
+    text-align: center;
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+font-size: 2rem;}
+
+
+
+h3 {color: rgba(17, 44, 59, 0.897);
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.subtitulo { text-align: center;
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+font-size: 2rem;} 
+
+.img-fluid{ 
+    display: flex;
+    width: 500px;
+    height: 500px;
+    text-align: center;
+    }
+
+
+ .card-title, .card-text{
+     text-align: center;
+        color: black;
+    font-size: 2rem;}
+
+    .img-fluid {
+        margin: auto;}
+
+    .col-sm-4 { 
+        text-align: center;
+        color: black;
+    font-size: 2rem;}
+    
