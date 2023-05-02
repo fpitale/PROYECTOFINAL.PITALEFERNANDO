@@ -1,3 +1,5 @@
+
+
 html{ 
 background-image: linear-gradient(to left, white, #3E6D9C);
 }
@@ -23,15 +25,14 @@ h3 {color: rgba(17, 44, 59, 0.897);
 font-size: 2rem;} 
 
 .img-fluid{ 
-    display: flex;
-    width: 500px;
-    height: 500px;
-    text-align: center;
-    }
+    display:flex;
+    width: 350px;
+    height: 250px;
+    text-align:center;}
 
 
  .card-title, .card-text{
-     text-align: center;
+     text-align: flex;
         color: black;
     font-size: 2rem;}
 
@@ -43,3 +44,14 @@ font-size: 2rem;}
         color: black;
     font-size: 2rem;}
     
+   .card-body {
+    display: flex;
+    flex-direction: column;
+   }
+
+   .card-description{ 
+    font-size: 20px;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    color:rgb(33, 41, 49);
+   }
+   
