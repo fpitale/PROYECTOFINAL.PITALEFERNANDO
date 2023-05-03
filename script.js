@@ -52,54 +52,103 @@ let carrito = [];
             /**
             Dibuja todos los productos a partir de la base de datos. 
             */
-            function renderizarProductos() {
-                baseDeDatos.forEach((info) => {
-                    // Estructura
-                    const miNodo = document.createElement('div')
-                    miNodo.classList.add('card', 'col-sm-4')
-                    // Body
-                    const miNodoCardBody = document.createElement('div')
-                    miNodoCardBody.classList.add('card-body')
-                    // Titulo
-                    const miNodoTitle = document.createElement('h5')
-                    miNodoTitle.classList.add('card-title')
-                    miNodoTitle.textContent = info.nombre
+            // function renderizarProductos() {
+            //     baseDeDatos.forEach((info) => {
+            //         // Estructura
+            //         const miNodo = document.createElement('div')
+            //         miNodo.classList.add('card', 'col-sm-4')
+            //         // Body
+            //         const miNodoCardBody = document.createElement('div')
+            //         miNodoCardBody.classList.add('card-body')
+            //         // Titulo
+            //         const miNodoTitle = document.createElement('h5')
+            //         miNodoTitle.classList.add('card-title')
+            //         miNodoTitle.textContent = info.nombre
 
-                    //descripcion del producto 
-                    const miNodoDescripcion = document.createElement('p')
-                    miNodoDescripcion.classList.add('card-description')
-                    miNodoDescripcion.textContent = info.descripcion
+            //         //descripcion del producto 
+            //         const miNodoDescripcion = document.createElement('p')
+            //         miNodoDescripcion.classList.add('card-description')
+            //         miNodoDescripcion.textContent = info.descripcion
 
-                    // Imagen
-                    const miNodoImagen = document.createElement('img')
-                    miNodoImagen.classList.add('img-fluid')
-                    miNodoImagen.setAttribute('src', info.imagen)
-                    // Precio
-                    const miNodoPrecio = document.createElement('p')
-                    miNodoPrecio.classList.add('card-text');
-                    miNodoPrecio.textContent = `${info.precio}${divisa}`
-                    // Boton 
-                    const miNodoBoton = document.createElement('button')
-                    miNodoBoton.classList.add('btn', 'btn-primary')
-                    miNodoBoton.textContent = '+'
-                    miNodoBoton.setAttribute('marcador', info.id)
-                    miNodoBoton.addEventListener('click', anyadirProductoAlCarrito)
-                    // Insertamos
+            //         // Imagen
+            //         const miNodoImagen = document.createElement('img')
+            //         miNodoImagen.classList.add('img-fluid')
+            //         miNodoImagen.setAttribute('src', info.imagen)
+            //         // Precio
+            //         const miNodoPrecio = document.createElement('p')
+            //         miNodoPrecio.classList.add('card-text');
+            //         miNodoPrecio.textContent = `${info.precio}${divisa}`
+            //         // Boton 
+            //         const miNodoBoton = document.createElement('button')
+            //         miNodoBoton.classList.add('btn', 'btn-primary')
+            //         miNodoBoton.textContent = '+'
+            //         miNodoBoton.setAttribute('marcador', info.id)
+            //         miNodoBoton.addEventListener('click', anyadirProductoAlCarrito)
+            //         // Insertamos
                     
-                    miNodoCardBody.appendChild(miNodoTitle)
-                    miNodoCardBody.appendChild(miNodoDescripcion)
-                    miNodoCardBody.appendChild(miNodoImagen)
-                    miNodoCardBody.appendChild(miNodoPrecio)
-                    miNodoCardBody.appendChild(miNodoBoton)
-                    miNodo.appendChild(miNodoCardBody)
-                    DOMitems.appendChild(miNodo)
-                })
-            }
+            //         miNodoCardBody.appendChild(miNodoTitle)
+            //         miNodoCardBody.appendChild(miNodoDescripcion)
+            //         miNodoCardBody.appendChild(miNodoImagen)
+            //         miNodoCardBody.appendChild(miNodoPrecio)
+            //         miNodoCardBody.appendChild(miNodoBoton)
+            //         miNodo.appendChild(miNodoCardBody)
+            //         DOMitems.appendChild(miNodo)
+            //     })
+            // }
+
+            function renderizarProductos() {
+                fetch('https://jsonplaceholder.typicode.com/comments')
+                  .then(response => response.json())
+                  .then(comments => {
+                    baseDeDatos.forEach((info, index) => {
+                      // Usamos el índice de la pizza para seleccionar un comentario de la lista
+                      const comentario = comments[index].body;
+                      // Aquí podemos crear los nodos HTML de la pizza, y usar el comentario en alguna parte
+                      // Estructura
+                      const miNodo = document.createElement('div');
+                      miNodo.classList.add('card', 'col-sm-4');
+                      // Body
+                      const miNodoCardBody = document.createElement('div');
+                      miNodoCardBody.classList.add('card-body');
+                      // Titulo
+                      const miNodoTitle = document.createElement('h5');
+                      miNodoTitle.classList.add('card-title');
+                      miNodoTitle.textContent = info.nombre;
+                      //descripcion del producto 
+                      const miNodoDescripcion = document.createElement('p');
+                      miNodoDescripcion.classList.add('card-description');
+                      miNodoDescripcion.textContent = comentario; // Usamos el comentario aquí
+                      // Imagen
+                      const miNodoImagen = document.createElement('img');
+                      miNodoImagen.classList.add('img-fluid');
+                      miNodoImagen.setAttribute('src', info.imagen);
+                      // Precio
+                      const miNodoPrecio = document.createElement('p');
+                      miNodoPrecio.classList.add('card-text');
+                      miNodoPrecio.textContent = `${info.precio}${divisa}`;
+                      // Boton 
+                      const miNodoBoton = document.createElement('button');
+                      miNodoBoton.classList.add('btn', 'btn-primary');
+                      miNodoBoton.textContent = '+';
+                      miNodoBoton.setAttribute('marcador', info.id);
+                      miNodoBoton.addEventListener('click', anyadirProductoAlCarrito);
+                      // Insertamos
+                      miNodoCardBody.appendChild(miNodoTitle);
+                      miNodoCardBody.appendChild(miNodoDescripcion);
+                      miNodoCardBody.appendChild(miNodoImagen);
+                      miNodoCardBody.appendChild(miNodoPrecio);
+                      miNodo
+              
+                    })
+                     }
+
+
+
 
             /**
             * Evento para añadir un producto al carrito de la compra
             */
-            function anyadirProductoAlCarrito(evento) {
+             const anyadirProductoAlCarrito (evento) => {
                 // Anyadimos el Nodo a nuestro carrito
                 carrito.push(evento.target.getAttribute('marcador'))
                 // Actualizamos el carrito 
@@ -108,6 +157,7 @@ let carrito = [];
                 guardarCarritoEnLocalStorage()
             }
 
+          
             /**
             * Dibuja todos los productos guardados en el carrito
             */
@@ -235,10 +285,4 @@ let carrito = [];
             // Inicio
             cargarCarritoDeLocalStorage()
             renderizarProductos()
-            renderizarCarrito()
-        
-        
-
-            fetch('https://jsonplaceholder.typicode.com/posts')
-            .then((response) => response.json())
-            .then((json) => console.log(json));
+            renderizarCarrito()}
